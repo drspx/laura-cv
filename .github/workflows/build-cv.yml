@@ -1,0 +1,51 @@
+name: Build CV PDFs
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: typst-community/setup-typst@v4
+
+      - name: Install fonts (Open Sans + FontAwesome 7)
+        run: |
+          mkdir -p fonts
+          # Open Sans (variable, covers all weights)
+          curl -sL -o fonts/OpenSans.ttf \
+            "https://raw.githubusercontent.com/googlefonts/opensans/main/fonts/variable/OpenSans%5Bwdth%2Cwght%5D.ttf"
+          curl -sL -o fonts/OpenSans-Italic.ttf \
+            "https://raw.githubusercontent.com/googlefonts/opensans/main/fonts/variable/OpenSans-Italic%5Bwdth%2Cwght%5D.ttf"
+          # FontAwesome 7 Free (matches fontawesome:0.6.2, which targets FA7)
+          curl -sL -o fa.zip \
+            "https://github.com/FortAwesome/Font-Awesome/releases/download/7.3.0/fontawesome-free-7.3.0-desktop.zip"
+          unzip -qo fa.zip -d fa
+          cp fa/*/otfs/*.otf fonts/
+
+      - name: Compile PDFs
+        run: |
+          typst compile --font-path fonts cv_en.typ
+          typst compile --font-path fonts cv_da.typ
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdfs
+          path: "*.pdf"
+
+      - name: Publish PDFs to 'latest' release
+        if: github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest CV
+          files: |
+            cv_en.pdf
+            cv_da.pdf
