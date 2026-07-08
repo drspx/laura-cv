@@ -40,9 +40,9 @@
   secondary-text-color: _secondary-text-color,
   faint-text-color: _faint-text-color,
   profile-image-enabled: true,
-  profile-image-size: 80%,
+  profile-image-size: 50%,
   profile-image-stroke: 2pt + _primary-accent-color,
-  profile-image-radius: 50%,
+  profile-image-radius: 10%,
   aside-width: 7cm,
   aside-background-color: _aside-background-color,
   aside-name-text: (
@@ -87,7 +87,6 @@
   aside-heading-line-thickness: 1pt,
   aside-heading-line-cap: "butt",
   aside-heading-line-opposite-cap: "butt",
-
   aside-pill-box-inner: (
     fill: _aside-background-color.lighten(75%),
     outset: 3.5pt,

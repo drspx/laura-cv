@@ -13,7 +13,7 @@
 
 #let name = "María Laura Espinal Bracho"
 // ponytail: udskift profile.jpg med dit eget foto, samme filnavn
-#let profile-image = image("profile.jpg", fit: "stretch")
+#let profile-image = image("profile.jpg", fit: "cover")
 #let short-description = [Odontologistuderende & kundeservicemedarbejder]
 
 #let th = theme-helper(theme)
@@ -138,15 +138,15 @@
   == Sprog
   #make-aside-grid(
     columns: 2,
-    rows: 14pt,
+    rows: 16pt,
     align: (horizon + left, horizon + right),
     theme: theme,
-    [Spansk (modersmål)],
+    [Spansk],
     dot-ratings(5, 5),
-    [Engelsk (flydende)],
+    [Engelsk],
     dot-ratings(5, 5),
-    [Dansk (B)],
-    dot-ratings(3, 5),
+    [Dansk],
+    dot-ratings(4, 5),
   )
 
   == Kompetencer

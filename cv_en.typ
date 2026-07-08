@@ -2,14 +2,8 @@
 //! Compile with: typst compile cv_en.typ
 
 #import "@preview/impressive-impression:0.2.1": (
-  cv,
-  dot-ratings,
-  make-pill,
-  make-aside-persona,
-  make-aside-grid,
-  make-main-content-block,
-  make-main-content-block-with-timeline,
-  theme-helper,
+  cv, dot-ratings, make-aside-grid, make-aside-persona, make-main-content-block, make-main-content-block-with-timeline,
+  make-pill, theme-helper,
 )
 
 #import "utils.typ": fa-icon-factory, fa-icon-factory-stack
@@ -19,7 +13,7 @@
 
 #let name = "María Laura Espinal Bracho"
 // ponytail: swap profile.jpg for your own photo, same filename
-#let profile-image = image("profile.jpg")
+#let profile-image = image("profile.jpg", fit: "cover")
 #let short-description = [Odontology Student & Customer Service Professional]
 
 #let th = theme-helper(theme)
@@ -147,31 +141,44 @@
     rows: 14pt,
     align: (horizon + left, horizon + right),
     theme: theme,
-    [Spanish (native)], dot-ratings(5, 5),
-    [English (fluent)], dot-ratings(5, 5),
-    [Danish (B)], dot-ratings(3, 5),
+    [Spanish],
+    dot-ratings(5, 5),
+    [English],
+    dot-ratings(5, 5),
+    [Danish],
+    dot-ratings(4, 5),
   )
 
   == Skills
   #make-aside-grid(
     columns: 2,
     theme: theme,
-    iconer("headset"), [Customer Service],
-    iconer("cash-register"), [Sales & Cashiering],
-    iconer("utensils"), [Food Service],
-    iconer("chalkboard-teacher"), [Teaching],
-    iconer("boxes-stacked"), [Inventory],
-    iconer("broom"), [Cleaning],
+    iconer("headset"),
+    [Customer Service],
+    iconer("cash-register"),
+    [Sales & Cashiering],
+    iconer("utensils"),
+    [Food Service],
+    iconer("chalkboard-teacher"),
+    [Teaching],
+    iconer("boxes-stacked"),
+    [Inventory],
+    iconer("broom"),
+    [Cleaning],
   )
 
   == Strengths
   #make-aside-grid(
     columns: 2,
     theme: theme,
-    iconer("comments", solid: true), [Communication],
-    iconer("people-group"), [Teamwork],
-    iconer("shuffle"), [Adaptability],
-    iconer("clock"), [Working Under Pressure],
+    iconer("comments", solid: true),
+    [Communication],
+    iconer("people-group"),
+    [Teamwork],
+    iconer("shuffle"),
+    [Adaptability],
+    iconer("clock"),
+    [Working Under Pressure],
   )
 ]
 
